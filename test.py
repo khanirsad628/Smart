@@ -9,25 +9,25 @@ from main import main
 from datetime import datetime
 
 @pytest.mark.parametrize("schedule, bounds, meeting_duration, expected_result", [
-    ( # Test Case 1: Normal case
+    ( #Normal case
         [["08:00", "09:30"], ["10:00", "12:00"], ["13:00", "14:30"]],
         ["08:00", "17:00"],
         60,
         [["12:00", "13:00"], ["14:30", "17:00"]]
     ),
-    ( # Test Case 2: No free time
+    ( #No free time
         [["09:00", "10:30"], ["11:00", "12:30"]],
         ["09:00", "13:00"],
         60,
         []
     ),
-    ( # Test Case 3: Edge case with minimum meeting duration
+    ( # Edge case with minimum meeting duration
         [["08:00", "09:00"], ["10:00", "11:00"], ["12:00", "13:00"]],
         ["08:00", "17:00"],
         1,
         [["09:00", "10:00"], ["11:00", "12:00"], ["13:00", "17:00"]]
     ),
-    ( # Test Case 4: Edge case with empty schedule
+    ( # Edge case with empty schedule
         [],
         ["08:00", "17:00"],
         60,
